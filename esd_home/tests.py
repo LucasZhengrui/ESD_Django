@@ -26,6 +26,12 @@ class Temp_test(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Your converted temperature of 212 in F is 100.008 in C")
 
+    # from .views inport convert
+    # def test_temp(self):
+    #    self.assertEqual(100.008, convert(212))
+    # 
+    # Here is another way to test the temp function.
+
     def test_view_correct_template(self):
         response = self.client.get(reverse('index'))
         # Used 'reverse' from django.urls to test the template of index
