@@ -1,4 +1,5 @@
 from django.test import TestCase, Client
+from django.urls import reverse
 
 # Create your tests here.
 class Temp_test(TestCase):
@@ -24,3 +25,9 @@ class Temp_test(TestCase):
         # Confirm that the form works by converting either boiling water temperatures.
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Your converted temperature of 212 in F is 100.008 in C")
+
+    def test_view_correct_template(self):
+        response = self.client.get(reverse('index'))
+        # Used 'reverse' from django.urls to test the template of index
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'esd_home/index.html')
