@@ -6,7 +6,7 @@ class Temp_test(TestCase):
     def test_page_load(self):
         client = Client()
         response = client.get('/')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200) # 200 means successful, 404 means not found, 502 means bad gateway
         self.assertContains(response, "which spurs him into conflict with")
 
         # Confirm that the home page loads.
